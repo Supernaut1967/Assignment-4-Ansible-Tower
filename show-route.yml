@@ -5,7 +5,7 @@
 
   tasks:
     - name: display ip route table
-      ansible.netcommon.ios.ios_command:
+      ios_command:
         commands:
           - show ip route
       register: route_table_output
