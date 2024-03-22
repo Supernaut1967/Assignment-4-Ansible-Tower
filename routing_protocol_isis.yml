@@ -1,0 +1,18 @@
+- name: Cisco setup isis
+  hosts: R1:R2
+  gather_facts: false
+
+  tasks:
+    - name: configure is-is protocol
+      ios_config:
+        lines:
+          - interface lo0
+          - ip address 10.1.1.1 255.255.255.255
+          - exit
+          - router isis basic
+          - net 49.0000.0000.0000.0001.00
+          -exit 
+
+    - name: print output
+      debug:
+        var: output.stdout_lines
